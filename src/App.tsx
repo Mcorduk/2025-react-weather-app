@@ -1,13 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-
+import { MainLayout } from "./components/MainLayout";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="bg-[url('./assets/background.png')] w-sm h-100vh"></div>
+    <div
+      id="app"
+      className="dark:bg-black w-screen h-screen text-white dark:text-black"
+    >
+      <MainLayout />
+    </div>
   );
 }
 

@@ -1,9 +1,43 @@
+@import url(./assets/css/fonts.css);
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+@layer base {
+  * {
+    letter-spacing: 0.01em;
+  }
+}
+
+@theme {
+  --font-serif: "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
+
+  /* Dark Theme Colors*/
+
+  --primary: #fff;
+  --secondary: rgba(60, 60, 67, 0.6);
+  --tertiary: rgba(60, 60, 67, 0.3);
+  --quaternary: rgba(60, 60, 67, 0.18);
+
+  --dark-primary: #000;
+  --dark-secondary: rgba(235, 235, 245, 0.6);
+  --dark-tertiary: rgba(235, 235, 245, 0.3);
+  --dark-quaternary: rgba(235, 235, 245, 0.18);
+
+  --solid-pink: #E0D9FF
+  --solid-purple: #C427FB
+  --solid-midnight-blue: #1F1D47
+  --solid-blue:#48319D
+
+  --linear-1: 'linear-gradient(to right, #2E335A, #1C1B33)',
+  --linear-2: 'linear-gradient(to right, #5936B4, #362A84)',
+  --linear-3: 'linear-gradient(to right, #3658B1, #C159EC)',
+  --linear-4: 'linear-gradient(to right, #AEC9FF, #083072)',
+  --radial-1: 'radial-gradient(circle, #F7CBFD, #7758D1)',
+  --angular-1: 'conic-gradient(from 90deg, #612FAB)',
 }

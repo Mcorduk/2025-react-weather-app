@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const ThemeToggleSwitch = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -17,7 +17,7 @@ const ThemeToggleSwitch = () => {
   };
 
   return (
-    <div>
+    <div className="text-end mr-5 mt-5 absolute top-0 right-0">
       <label className="switch">
         <input
           id="toggle"

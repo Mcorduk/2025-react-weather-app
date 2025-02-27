@@ -1,5 +1,19 @@
 @font-face {
   font-family: "SF Pro Display";
+  src: url("/fonts/SFProDisplay-Ultralight.OTF") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFProDisplay-Thin.OTF") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
   src: url("/fonts/SFProDisplay-Regular.OTF") format("opentype");
   font-weight: normal;
   font-style: normal;
