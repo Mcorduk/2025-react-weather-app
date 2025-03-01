@@ -1,4 +1,5 @@
 import HomeHeader from "./HomeHeader";
+import HomeModal from "./HomeModal";
 import House from "./House";
 import TabBar from "./TabBar";
 import ThemeToggleSwitch from "./ThemeToggleSwitch";
@@ -15,6 +16,7 @@ export function MainLayout() {
         low={"18"}
       />
       <House></House>
+      <HomeModal />
       <TabBar></TabBar>
     </div>
   );

@@ -41,3 +41,55 @@
   --radial-1: 'radial-gradient(circle, #F7CBFD, #7758D1)',
   --angular-1: 'conic-gradient(from 90deg, #612FAB)',
 }
+
+
+.home-modal{
+  background: conic-gradient(
+    rgba(97, 47, 171, 0) 14%, 
+    rgba(97, 47, 171, 1) 36%, 
+    rgba(97, 47, 171, 0) 63%, 
+    rgba(97, 47, 171, 0.6) 75%
+);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-container {
+  position: relative;
+  height: 50px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5px;
+  
+  border-top-left-radius: 49px; /* Smoothly rounded edges */
+  border-top-right-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* iOS-like subtle border */
+ 
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tab.active {
+  color: white;
+}
+
+.notch {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
