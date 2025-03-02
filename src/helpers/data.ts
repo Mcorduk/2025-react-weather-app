@@ -3,7 +3,7 @@ import { IWeatherWidgetData } from "../types/weather";
 export const dummyWeatherData: IWeatherWidgetData = {
   hourly: [
     {
-      timeLabel: "Past Hour",
+      timeLabel: "12 AM",
       condition: "Cloudy",
       chanceOfPrecipitation: 20,
       temperature: 18,
@@ -15,38 +15,38 @@ export const dummyWeatherData: IWeatherWidgetData = {
       temperature: 17,
     },
     {
-      timeLabel: "Next Hour",
+      timeLabel: "2 AM",
       condition: "Sunny",
       chanceOfPrecipitation: 10,
       temperature: 19,
     },
     {
-      timeLabel: "In 2 Hours",
+      timeLabel: "3 AM",
       condition: "Cloudy",
       chanceOfPrecipitation: 15,
       temperature: 18,
     },
     {
-      timeLabel: "In 3 Hours",
+      timeLabel: "4 AM",
       condition: "Windy",
       chanceOfPrecipitation: 5,
       temperature: 16,
     },
-    { timeLabel: "In 4 Hours", condition: "Foggy", temperature: 15 },
+    { timeLabel: "5 AM", condition: "Foggy", temperature: 15 },
     {
-      timeLabel: "In 5 Hours",
+      timeLabel: "6 AM",
       condition: "Sunny",
       chanceOfPrecipitation: 0,
       temperature: 20,
     },
     {
-      timeLabel: "In 6 Hours",
+      timeLabel: "7 AM",
       condition: "Rainy",
       chanceOfPrecipitation: 60,
       temperature: 17,
     },
     {
-      timeLabel: "In 7 Hours",
+      timeLabel: "8 AM",
       condition: "Cloudy",
       chanceOfPrecipitation: 30,
       temperature: 18,
@@ -54,7 +54,7 @@ export const dummyWeatherData: IWeatherWidgetData = {
   ],
   weekly: [
     {
-      timeLabel: "Yesterday",
+      timeLabel: "SAT",
       condition: "Sunny",
       chanceOfPrecipitation: 0,
       temperature: 22,
