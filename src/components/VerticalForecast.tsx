@@ -19,8 +19,8 @@ export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
       <p>{timeLabel}</p>
       <div>
         {" "}
-        <p>{condition}</p>
-        <p>{chanceOfPrecipitation ?? "N/A"}%</p>
+        <img src={`/src/assets/images/icons/small/${condition}.png`} alt="" />
+        <p className="text-sm font-normal">{chanceOfPrecipitation ?? "N/A"}%</p>
       </div>
       <p>{temperature}°C</p>
     </div>
