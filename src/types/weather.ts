@@ -1,13 +1,16 @@
 export type ForecastType = "hourly" | "weekly";
 
 type WeatherCondition =
-  | "Sunny"
-  | "Cloudy"
-  | "Rainy"
-  | "Snowy"
+  | "clear-day"
+  | "clear-night"
+  | "rain"
+  | "snow"
   | "Stormy"
-  | "Foggy"
-  | "Windy";
+  | "fog"
+  | "wind"
+  | "cloudy"
+  | "partly-cloudy-day"
+  | "partly-cloudy-night";
 
 export interface IWeatherData {
   timeLabel: string;
