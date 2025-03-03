@@ -19,56 +19,55 @@
 
   /* Dark Theme Colors*/
 
-  --primary: #fff;
-  --secondary: rgba(60, 60, 67, 0.6);
-  --tertiary: rgba(60, 60, 67, 0.3);
-  --quaternary: rgba(60, 60, 67, 0.18);
+  --color-primary: #fff;
+  --color-secondary: rgba(60, 60, 67, 0.6);
+  --color-tertiary: rgba(60, 60, 67, 0.3);
+  --color-quaternary: rgba(60, 60, 67, 0.18);
 
-  --dark-primary: #000;
-  --dark-secondary: rgba(235, 235, 245, 0.6);
-  --dark-tertiary: rgba(235, 235, 245, 0.3);
-  --dark-quaternary: rgba(235, 235, 245, 0.18);
+  --color-dark-primary: #000;
+  --color-dark-secondary: rgba(235, 235, 245, 0.6);
+  --color-dark-tertiary: rgba(235, 235, 245, 0.3);
+  --color-dark-quaternary: rgba(235, 235, 245, 0.18);
 
-  --solid-pink: #E0D9FF
-  --solid-purple: #C427FB
-  --solid-midnight-blue: #1F1D47
-  --solid-blue:#48319D
+  --color-solid-pink: #e0d9ff;
+  --color-solid-purple: #c427fb;
+  --color-solid-midnight-blue: #1f1d47;
+  --color-solid-blue: #48319d;
 
-  --linear-1: 'linear-gradient(to right, #2E335A, #1C1B33)',
-  --linear-2: 'linear-gradient(to right, #5936B4, #362A84)',
-  --linear-3: 'linear-gradient(to right, #3658B1, #C159EC)',
-  --linear-4: 'linear-gradient(to right, #AEC9FF, #083072)',
-  --radial-1: 'radial-gradient(circle, #F7CBFD, #7758D1)',
-  --angular-1: 'conic-gradient(from 90deg, #612FAB)',
+  --color-linear-1: linear-gradient(to right, #2e335a 0%, #1c1b33 100%);
+  --color-linear-2: linear-gradient(to right, #5936b4, #362a84);
+  --color-linear-3: linear-gradient(to right, #3658b1, #c159ec);
+  --color-linear-4: linear-gradient(to right, #aec9ff, #083072);
+  --color-radial-1: radial-gradient(circle, #f7cbfd, #7758d1);
+  --color-angular-1: conic-gradient(from 90deg, #612fab);
 }
 
-
-.home-modal{
+.home-modal {
   background: conic-gradient(
-    rgba(97, 47, 171, 0) 14%, 
-    rgba(97, 47, 171, 1) 36%, 
-    rgba(97, 47, 171, 0) 63%, 
+    rgba(97, 47, 171, 0) 14%,
+    rgba(97, 47, 171, 1) 36%,
+    rgba(97, 47, 171, 0) 63%,
     rgba(97, 47, 171, 0.6) 75%
-);
-border-radius: 64px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  );
+  border-radius: 64px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .tab-container {
   position: relative;
-  height: 50px; 
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 5px;
-  
+
   border-top-left-radius: 49px; /* Smoothly rounded edges */
   border-top-right-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.2); /* iOS-like subtle border */
- 
+
   backdrop-filter: blur(10px); /* Glassmorphism effect */
 }
 
@@ -92,4 +91,13 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   height: 6px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
+}
+
+.current-forecast {
+  background: var(--color-solid-purple);
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
