@@ -6,10 +6,16 @@ export interface IVerticalForecastProps {
 }
 
 export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
-  const { timeLabel, condition, chanceOfPrecipitation, temperature } = forecast;
+  const { timeLabel, condition, temperature, chanceOfPrecipitation } = forecast;
 
+  const currentTime =
+    timeLabel === "Now" || timeLabel === "Today" ? true : false;
   return (
-    <div className="border max-w-[60px]">
+    <div
+      className={`min-w-[60px] min-h-[140px] flex flex-col justify-around border border-gray-500 rounded-4xl py-2 shadow ${
+        currentTime ? "bg-solid-blue" : "inactive"
+      }`}
+    >
       <p>{timeLabel}</p>
       <div>
         {" "}

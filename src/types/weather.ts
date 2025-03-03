@@ -9,8 +9,8 @@ type WeatherCondition =
   | "Foggy"
   | "Windy";
 
-interface IWeatherData {
-  timeLabel: string; // "Past Hour", "Now", "Next 7 hours" or "Yesterday", "Now", "Next 7 days"
+export interface IWeatherData {
+  timeLabel: string;
   condition: WeatherCondition;
   chanceOfPrecipitation?: number;
   temperature: number;
