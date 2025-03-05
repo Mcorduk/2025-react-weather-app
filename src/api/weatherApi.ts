@@ -1,92 +1,65 @@
-import { IWeatherData, IWeatherWidgetData } from "../types";
+import { cityFromAdress } from "../helpers/helper";
+import { IWeatherData } from "../types";
+import {
+  CurrentWeather,
+  DayWeather,
+  HourWeather,
+  WeatherApiResponse,
+} from "../types/api";
 
-export interface CurrentCondition {
-  location: string;
-  temp: number;
-  icon: string;
-  conditions: string;
-  high: number;
-  low: number;
+export interface GetWeatherResponse {
+  resolvedAddress: string;
+  currentConditions: CurrentWeather;
+  hourlyForecast: IWeatherData[];
+  weeklyForecast: IWeatherData[];
 }
 
-export interface DayDetails {
-  uvIndex: number;
-  sunrise: Date;
-  sunset: Date;
-  windSpeed: number;
-  windDirection: number;
-  humidity: number;
-  visibility: number;
-}
-
-export interface IGetWeather {
-  currentCondition: CurrentCondition;
-  dayDetails: DayDetails;
-  hourly: IWeatherData[];
-  daily: IWeatherData[];
-}
-export async function getWeather(city: string): Promise<IGetWeather> {
+export async function getWeather(city: string): Promise<GetWeatherResponse> {
   try {
-    const apiKey = import.meta.env.VC_API_KEY;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const apiKey = import.meta.env.VITE_VC_API_KEY;
 
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/yesterday/next7hours?unitGroup=metric&current,hours,days&key=${apiKey}&contentType=json`;
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/yesterday/next7hours?unitGroup=metric&current,hours,days&key=${
+      apiKey as string
+    }&contentType=json`;
 
-    const response = await fetch(url, { mode: "cors" });
+    const response: Response = await fetch(url, { mode: "cors" });
 
     if (!response.ok) {
       throw new Error(`Error fetching weather data: ${response.statusText}`);
     }
 
-    const data: unknown = await response.json();
+    const data = (await response.json()) as WeatherApiResponse;
 
     const current = data.currentConditions;
-    const currentWeather = {
-      location: data.resolvedAddress,
-      temp: current.temp,
-      icon: current.icon,
+    const currentConditions = {
+      temp: Math.round(current.temp),
       conditions: current.conditions,
-      high: data.days[0].tempmax,
-      low: data.days[0].tempmin,
-      uvindex: current.uvindex,
+      high: Math.round(data.days[1].tempmax),
+      low: Math.round(data.days[1].tempmin),
     };
 
-    // Extract Hourly Forecast (Next 7 Hours)
-    const hourlyForecast = data.days[0].hours.slice(0, 7).map((hour: any) => ({
-      time: hour.datetime,
-      temp: hour.temp,
-      conditions: hour.conditions,
-      icon: hour.icon,
-    }));
+    const hourlyForecast = data.days[1].hours
+      .slice(0, 7)
+      .map((hour: HourWeather) => ({
+        timeLabel: hour.datetime,
+        temperature: Math.round(hour.temp),
+        chanceOfPrecipitation: Math.round(hour.precipprob),
+        condition: hour.icon,
+      }));
 
-    // Extract Weekly Forecast (Next 7 Days)
-    const weeklyForecast = data.days.slice(0, 7).map((day: any) => ({
-      date: day.datetime,
-      tempMax: day.tempmax,
-      tempMin: day.tempmin,
-      conditions: day.conditions,
-      icon: day.icon,
+    const weeklyForecast = data.days.slice(0, 7).map((day: DayWeather) => ({
+      timeLabel: day.datetime,
+      temperature: Math.round(day.temp),
+      chanceOfPrecipitation: Math.round(day.precipprob),
+      condition: day.icon,
     }));
 
     return {
-      currentCondition: {
-        location: data.resolvedAddress,
-        temp: data.currentConditions.temp,
-        icon: data.currentConditions.icon,
-        conditions: data.currentConditions.conditions,
-        high: data.days[0].tempmax,
-        low: data.days[0].tempmin,
-      },
-      dayDetails: {
-        uvIndex: data.currentConditions.uvindex,
-        sunrise: new Date(data.days[0].sunriseEpoch * 1000),
-        sunset: new Date(data.days[0].sunsetEpoch * 1000),
-        windSpeed: data.currentConditions.windspeed,
-        windDirection: data.currentConditions.winddir,
-        humidity: data.currentConditions.humidity,
-        visibility: data.currentConditions.visibility,
-      },
-      hourly: [],
-      daily: [],
+      resolvedAddress: cityFromAdress(data.resolvedAddress),
+      currentConditions,
+      hourlyForecast,
+      weeklyForecast,
     };
   } catch (error) {
     console.error("Weather API error:", error);
