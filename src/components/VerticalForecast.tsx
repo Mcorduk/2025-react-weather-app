@@ -1,5 +1,5 @@
-import * as React from "react";
 import { IWeatherData } from "../types";
+import { convertTo12HourFormat } from "../helpers/helper";
 
 export interface IVerticalForecastProps {
   forecast: IWeatherData;
@@ -16,11 +16,15 @@ export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
         currentTime ? "bg-solid-blue" : "inactive"
       }`}
     >
-      <p>{timeLabel}</p>
+      <p>{convertTo12HourFormat(timeLabel)}</p>
       <div>
         {" "}
         <img src={`/src/assets/images/icons/small/${condition}.png`} alt="" />
-        <p className="text-sm font-normal">{chanceOfPrecipitation ?? "N/A"}%</p>
+        <p className="text-sm font-normal">
+          {chanceOfPrecipitation === 0
+            ? ""
+            : chanceOfPrecipitation?.toString().concat("%")}
+        </p>
       </div>
       <p>{temperature}°C</p>
     </div>

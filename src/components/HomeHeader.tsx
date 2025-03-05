@@ -1,9 +1,9 @@
 export interface IHomeHeaderProps {
   city: string;
-  currentDegree: string;
+  currentDegree: number;
   description: string;
-  high: string;
-  low: string;
+  high: number;
+  low: number;
 }
 
 export default function HomeHeader({

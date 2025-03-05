@@ -2,11 +2,15 @@
 import { useState } from "react";
 import { dummyWeatherData } from "../helpers/data";
 import WeatherWidget from "./WeatherWidget";
-import { ForecastType } from "../types/weather";
+import { ForecastType, IWeatherWidgetData } from "../types/weather";
 
-export default function HomeModal() {
+export interface IHomeModalProps {
+  data: IWeatherWidgetData;
+  forecastType: ForecastType;
+}
+
+export default function HomeModal(props: IHomeModalProps) {
   const [forecastType, setForecastType] = useState<ForecastType>("hourly");
-
   return (
     <div className="home-modal w-full h-3/8 absolute z-3 bg-gray-50 overflow-hidden">
       <div className="tab-container flex justify-around w-full px-6 ">
@@ -14,7 +18,7 @@ export default function HomeModal() {
         <div className="tab">Weekly Forecast</div>
         <div className="notch"></div>
       </div>
-      <WeatherWidget data={dummyWeatherData} forecastType={"hourly"} />
+      <WeatherWidget data={props.data} forecastType={props.forecastType} />
     </div>
   );
 }
