@@ -1,6 +1,6 @@
 export type ForecastType = "hourly" | "weekly";
 
-type WeatherCondition =
+export type WeatherCondition =
   | "clear-day"
   | "clear-night"
   | "rain"
