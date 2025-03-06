@@ -15,14 +15,17 @@ export default function WeatherWidget({
   forecastType,
 }: IWeatherWidgetProps) {
   return (
-    <div className="flex gap-2 p-4">
+    <div className="flex gap-2 p-4 scrollable-container">
       {/* 1. The past Hour, Now, Next 7 hours */}
-      {/* 1. Yesterday, Now, Next 7 days */}
-      {data[forecastType].map((forecast: IWeatherData) => {
-        return (
-          <VerticalForecast key={forecast.timeLabel} forecast={forecast} />
-        );
-      })}
+      {/* Reverse array because of scroll bar being on top*/}
+      {data[forecastType]
+        .slice()
+        .reverse()
+        .map((forecast: IWeatherData) => {
+          return (
+            <VerticalForecast key={forecast.timeLabel} forecast={forecast} />
+          );
+        })}
     </div>
   );
 }

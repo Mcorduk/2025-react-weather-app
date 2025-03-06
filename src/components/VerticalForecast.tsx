@@ -12,7 +12,7 @@ export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
     timeLabel === "Now" || timeLabel === "Today" ? true : false;
   return (
     <div
-      className={`min-w-[60px] min-h-[140px] flex flex-col justify-around border border-gray-500 rounded-4xl py-2 shadow ${
+      className={`content min-w-[60px] min-h-[140px] flex flex-col justify-around border border-gray-500 rounded-4xl py-2 shadow ${
         currentTime ? "bg-solid-blue" : "inactive"
       }`}
     >
