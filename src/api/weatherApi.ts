@@ -39,8 +39,11 @@ export async function getWeather(city: string): Promise<GetWeatherResponse> {
       low: Math.round(data.days[1].tempmin),
     };
 
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours(); // Get the current hour
+
     const hourlyForecast = data.days[1].hours
-      .slice(0, 7)
+      .slice(Math.max(0, currentHour - 1), currentHour + 8)
       .map((hour: HourWeather) => ({
         timeLabel: hour.datetime,
         temperature: Math.round(hour.temp),
