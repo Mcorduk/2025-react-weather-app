@@ -19,7 +19,7 @@ export async function getWeather(city: string): Promise<GetWeatherResponse> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const apiKey = import.meta.env.VITE_VC_API_KEY;
 
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/yesterday/next7hours?unitGroup=metric&current,hours,days&key=${
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/yesterday/next7days?unitGroup=metric&current,hours,days&key=${
       apiKey as string
     }&contentType=json`;
 
@@ -30,7 +30,7 @@ export async function getWeather(city: string): Promise<GetWeatherResponse> {
     }
 
     const data = (await response.json()) as WeatherApiResponse;
-
+    console.log(data);
     const current = data.currentConditions;
     const currentConditions = {
       temp: Math.round(current.temp),
