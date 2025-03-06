@@ -15,7 +15,7 @@ export default function HomeModal({ data }: IHomeModalProps) {
     <div className="home-modal w-full h-3/8 absolute z-3 bg-gray-50 overflow-hidden">
       <div className="tab-container flex justify-around w-full px-6">
         <Button
-          className={`tab ${forecastType === "hourly" ? "active" : ""}`}
+          className={` ${forecastType === "hourly" ? "active" : ""}`}
           onClick={() => {
             setForecastType("hourly");
           }}
@@ -24,7 +24,7 @@ export default function HomeModal({ data }: IHomeModalProps) {
         </Button>
 
         <Button
-          className={`tab ${forecastType === "weekly" ? "active" : ""}`}
+          className={forecastType === "weekly" ? "active" : ""}
           onClick={() => {
             setForecastType("weekly");
           }}
@@ -35,7 +35,6 @@ export default function HomeModal({ data }: IHomeModalProps) {
         <div className="notch"></div>
       </div>
 
-      {/* Pass the selected forecast type to the WeatherWidget */}
       <WeatherWidget data={data} forecastType={forecastType} />
     </div>
   );
