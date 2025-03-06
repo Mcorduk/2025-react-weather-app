@@ -23,7 +23,11 @@ export default function WeatherWidget({
         .reverse()
         .map((forecast: IWeatherData) => {
           return (
-            <VerticalForecast key={forecast.timeLabel} forecast={forecast} />
+            <VerticalForecast
+              key={forecast.timeLabel}
+              forecast={forecast}
+              forecastType={forecastType}
+            />
           );
         })}
     </div>

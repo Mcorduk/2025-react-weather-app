@@ -1,4 +1,4 @@
-import { format, parse } from "date-fns";
+import { format, isToday, parse, parseISO } from "date-fns";
 
 export function cityFromAdress(address: string) {
   const commaIndex = address.indexOf(",");
@@ -9,8 +9,21 @@ export function cityFromAdress(address: string) {
   return city;
 }
 
-export function convertTo12HourFormat(timeString: string): string {
-  const date = parse(timeString, "HH:mm:ss", new Date());
+export function formatTimeLabel(
+  timeString: string,
+  forecastType: "hourly" | "weekly" // Literal union type
+): string {
+  if (!timeString) return "";
 
-  return format(date, "hh a");
+  if (forecastType === "hourly") {
+    const date = parse(timeString, "HH:mm:ss", new Date());
+    return format(date, "hh a");
+  }
+
+  if (forecastType === "weekly") {
+    const date = parseISO(timeString);
+    return isToday(date) ? "Now" : format(date, "EEE");
+  }
+
+  return timeString;
 }

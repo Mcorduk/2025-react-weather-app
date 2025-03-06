@@ -1,11 +1,15 @@
-import { IWeatherData } from "../types";
-import { convertTo12HourFormat } from "../helpers/helper";
+import { ForecastType, IWeatherData } from "../types";
+import { formatTimeLabel } from "../helpers/helper";
 
 export interface IVerticalForecastProps {
   forecast: IWeatherData;
+  forecastType: ForecastType;
 }
 
-export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
+export default function VerticalForecast({
+  forecast,
+  forecastType,
+}: IVerticalForecastProps) {
   const { timeLabel, condition, temperature, chanceOfPrecipitation } = forecast;
 
   const currentTime =
@@ -16,7 +20,7 @@ export default function VerticalForecast({ forecast }: IVerticalForecastProps) {
         currentTime ? "bg-solid-blue" : "inactive"
       }`}
     >
-      <p>{convertTo12HourFormat(timeLabel)}</p>
+      <p>{formatTimeLabel(timeLabel, forecastType)}</p>
       <div>
         {" "}
         <img src={`/src/assets/images/icons/small/${condition}.png`} alt="" />
