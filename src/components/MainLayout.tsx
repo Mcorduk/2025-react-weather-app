@@ -7,6 +7,7 @@ import ThemeToggleSwitch from "./ThemeToggleSwitch";
 import { getWeather, GetWeatherResponse } from "../api/weatherApi";
 
 export function MainLayout() {
+  const [city, setCity] = useState<string>("New York");
   const [weather, setWeather] = useState<GetWeatherResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +15,7 @@ export function MainLayout() {
   useEffect(() => {
     async function fetchWeather() {
       try {
-        const data = await getWeather("Istanbul"); // Call the async function
+        const data = await getWeather(city);
         setWeather(data);
       } catch (err) {
         setError("Failed to fetch weather data.");
@@ -25,7 +26,7 @@ export function MainLayout() {
     }
 
     void fetchWeather();
-  }, []);
+  }, [city]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error || weather === null) return <p>Error loading weather data.</p>;
@@ -48,7 +49,7 @@ export function MainLayout() {
       />
       <House />
       <HomeModal data={data} forecastType="hourly" />
-      <TabBar />
+      <TabBar setCity={setCity} />
     </div>
   );
 }
