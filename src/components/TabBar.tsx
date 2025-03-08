@@ -2,8 +2,13 @@
 import { Menu } from "lucide-react";
 import { Search } from "lucide-react";
 import { MapPinned } from "lucide-react";
+import Button from "./Button";
 
-export default function TabBar() {
+interface ITabBarProps {
+  setCity: (city: string) => void;
+}
+
+export default function TabBar({ setCity }: ITabBarProps) {
   return (
     <div className=" absolute w-full h-[100px] bottom-0 left-0 flex items-center">
       <img
@@ -13,7 +18,9 @@ export default function TabBar() {
       />
       <div className="z-4 flex justify-between items-end w-full p-7">
         <MapPinned color="white" size={48} className="z-4" />
-        <Search color="white" size={48} className="z-4 mb-3" />
+        <Button onClick={() => setCity}>
+          <Search color="white" size={48} className="z-4 mb-3" />
+        </Button>
         <Menu color="white" size={48} className="z-4" />
       </div>
     </div>
