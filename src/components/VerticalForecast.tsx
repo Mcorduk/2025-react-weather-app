@@ -25,9 +25,13 @@ export default function VerticalForecast({
           src={`/src/assets/images/icons/small/${condition}.png`}
           alt={condition}
         />
-        {chanceOfPrecipitation > 0 && (
-          <p className="text-sm font-normal">{chanceOfPrecipitation}%</p>
-        )}
+        <div className="text-sm font-normal min-h-[20px] flex items-center justify-center text-blue-300">
+          {chanceOfPrecipitation > 0 ? (
+            <p>{chanceOfPrecipitation}%</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
       </div>
       <p>{temperature}°C</p>
     </div>
